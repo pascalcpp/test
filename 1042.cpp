@@ -1,4 +1,4 @@
-#incldue<stdio.h>
+#include<stdio.h>
 typedef struct{
 	char data[10000];
 	int top;
@@ -12,7 +12,7 @@ void push(Stack *& stack, char e) {
 	stack->data[++stack->top] = e;
 }
 char top(Stack *& stack) {
-	return stack->data[top];
+	return stack->data[stack->top];
 }
 bool empty(Stack *& stack) {
 
@@ -21,9 +21,7 @@ bool empty(Stack *& stack) {
 void pop(Stack *& stack, char &e) {
 	e = stack->data[stack->top--];
 }
-// * *
-// 2 * 1 * 3 + 4
-// 2 1 3 * *
+
 int main() {
 	Stack* stack;
     init(stack);
@@ -38,7 +36,7 @@ int main() {
                 	push(stack, c);
                 } else if(c == ')') {
                     char t;
-                	while(top(stack) != '(') {                 	
+                	while(top(stack) != '(') {
                         pop(stack, t);
                         printf("%c", t);
                     }
@@ -51,7 +49,7 @@ int main() {
                     }
                     push(stack, c);
                 } else {
-                	push(stakc, c);
+                	push(stack, c);
                 }
             }else {
             	push(stack, c);
