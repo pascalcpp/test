@@ -11,7 +11,7 @@ int main() {
     memset(hashmap, 0, sizeof(hashmap));
     scanf("%d", &m);
 	scanf("%d", &n);
-    for(int i = 0; i < m; i++) {
+    for(int i = 0; i < n; i++) {
     	int temp;
         scanf("%d", &temp);
         Node* node = new Node;
