@@ -1,26 +1,34 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-int arr[1000];
+
+// 查找成功返回该元素的index, 失败返回-1
+int seq_search(const int seq[], int n, const int &value, int& c) {
+    for(int i = 0; i < n; i++) {
+        if(seq[i] == value) {
+            c++;
+            return i;
+        }
+        c++;
+    }
+
+    return -1;
+}
+int arr[1000000];
 int main() {
 	int n;
     cin >> n;
     for(int i = 0; i < n; i++) {
     	cin >> arr[i];
     }
-    int val, c = 0, idx = -1;
+    int val, c = 0;
     cin >> val;
-    for(int i = 0; i < n; i++) {
-    	if(val == arr[i]) {
-        	c++;
-            idx = -1;
-           	break;
-        } else {
-        	c++;
-        }
+    int idx = seq_search(arr, n, val, c);
+    if(idx == -1) {
+    	cout << idx << "\r\n" << c;
+    } else {
+    	cout << idx+1 << "\r\n" << c;
     }
-    cout << idx << endl << c;
 
 
-
-	return 0;
+    return 0;
 }
