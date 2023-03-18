@@ -26,6 +26,7 @@ int main() {
     if(idx == -1) {
     	cout << idx << "\r\n" << c;
     } else {
+	    // 位序 = 下标+1
     	cout << idx+1 << "\r\n" << c;
     }
 
