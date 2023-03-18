@@ -1,13 +1,13 @@
 #include<stdio.h>
-typedef ANode{
+typedef struct ANode{
 	int adjvex;
     ANode* adjarc;
 }ArcNode;
-typedef VVNode {
+typedef struct VVNode {
 	int val;
     ArcNode* firstArc;
 }VNode;
-typedef Graph{
+typedef struct Graph{
 	int n;
     VNode* vertexs[100];
 }AdjGraph;
