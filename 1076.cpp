@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<string.h>
+#include<iostream>
+using namespace std;
 typedef struct ANode{
 	int adjvex;
     ANode* adjarc;
@@ -46,7 +48,8 @@ int main(){
     getchar();
     for(int i = 0; i < n; i++) {
         char c;
-        scanf("%c", &c);
+        cin >> c; 
+        // scanf("%c", &c);
         getchar();
         id2map[i] = c;
         map2id[c-'A'] = i;
@@ -55,7 +58,8 @@ int main(){
     for(int i = 0; i < e; i++) {
         int v1, v2;
         char c1, c2;
-        scanf("%c %c", &c1, &c2);
+        cin >> c1 >> c2;
+        // scanf("%c %c", &c1, &c2);
         getchar();
         v1 = map2id[c1-'A'], v2 = map2id[c2-'A'];
 
