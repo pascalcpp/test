@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<string.h>
+#include<iostream>
+using namespace std;
 typedef struct ANode{
 	int adjvex;
     ANode* adjarc;
@@ -11,18 +13,23 @@ typedef struct VVNode {
 typedef struct Graph{
 	int n;
 	int e;
-    VNode* vertexs[10000];
+    VNode* vertexs[1000];
 }AdjGraph;
-int visit[10000];
-char id2map[10000];
-int map2id[10000];
-void dfs(AdjGraph* graph, int v) {
+int visit[1000];
+char id2map[1000];
+int map2id[1000];
+void dfs(AdjGraph* graph, int v, int level) {
     visit[v] = 1;
-    printf("%c ", id2map[v]);
+    if(level != 0) {
+    	printf(" %c", id2map[v]);
+    } else {
+   		printf("%c", id2map[v]);
+    }
+
     ArcNode* arc = graph->vertexs[v]->firstArc;
     while(arc != nullptr) {
         if(!visit[arc->adjvex]) {
-          dfs(graph, arc->adjvex);
+          dfs(graph, arc->adjvex, level+1);
         }
         arc = arc->adjarc;
     }
@@ -41,7 +48,7 @@ int main(){
     getchar();
     for(int i = 0; i < n; i++) {
         char c;
-        scanf("%c", &c);
+        cin >> c;
         getchar();
         id2map[i] = c;
         map2id[c-'A'] = i;
@@ -50,7 +57,8 @@ int main(){
     for(int i = 0; i < e; i++) {
         int v1, v2;
         char c1, c2;
-        scanf("%c %c", &c1, &c2);
+        cin >> c1 >> c2;
+        //scanf("%c %c", &c1, &c2);
         getchar();
         v1 = map2id[c1-'A'], v2 = map2id[c2-'A'];
 
@@ -82,6 +90,6 @@ int main(){
         }
     }
     memset(visit, 0x00, sizeof(visit));
-    dfs(graph, 0);
+    dfs(graph, 0, 0);
 	return 0;
 }
