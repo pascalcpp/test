@@ -1,13 +1,15 @@
 #include<stdio.h>
 #include<string.h>
+#include<iostream>
 #define MAX 10000
+using namespace std;
 typedef struct {
     int edges[MAX][MAX];
     int n;
 }MatGraph;
 int visit[MAX];
 char id2map[MAX];
-int map2id[50];
+int map2id[MAX];
 int queue[MAX];
 int rear = 0, front = 0;
 void push(int e) {
@@ -46,7 +48,8 @@ int main() {
     graph->n = n;
     getchar();
     for(int i = 0; i < n; i++) {
-    	scanf("%c", &id2map[i]);
+        cin >> id2map[i]; // 这种方式才能AC
+    	//scanf("%c", &id2map[i]);
        	map2id[id2map[i]-'A'] = i;
     }
 
@@ -57,7 +60,8 @@ int main() {
     }
     char c;
     getchar();
-    scanf("%c", &c);
+    cin >> c; //AC
+    //scanf("%c", &c);
     memset(visit, 0x00, sizeof(visit));
     bfs(graph, map2id[c-'A']);
     return 0;
